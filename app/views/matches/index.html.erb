@@ -1,1 +1,21 @@
 <%= render partial: 'shared/navbar' %>
+
+<div class="container">
+
+  <h1>Matches</h1>
+
+  <table class="table">
+    <tr>
+      <th>Name</th>
+      <th>Instrument</th>
+    </tr>
+
+    <% @matches.each do |match| %>
+      <tr>
+        <td><%= match.name %></td>
+        <td><%= match.instrument %></td>
+      </tr>
+    <% end %>
+  </table>
+
+</div>
