@@ -13,6 +13,8 @@ A matching application for musicians
 * Location based matching
 * Chat
 * Look nice
-* Filters (By instrument)
+* Filters (By instrument, distance, etc)
 * Audio Clip Uploading
 * Account Creation
+* Record Audio Clips
+* More???
