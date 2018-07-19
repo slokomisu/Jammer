@@ -3,13 +3,9 @@
   <h1 class="display-4">Jammer</h1>
   <p class="lead">The app for finding musicians to jam with.</p>
   <hr class="my-4">
-  <% unless user_signed_in? %>
     <p>Join today!</p>
   <p class="lead">
     <%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-primary btn-lg' %>
     <%= link_to 'Log in', new_user_session_path, class: 'btn btn-secondary btn-lg' %>
   </p>
-  <% else %>
-  <%= link_to 'Continue', swipes_path, class: 'btn btn-primary btn-lg' %>
-  <% end %>
 </div>
