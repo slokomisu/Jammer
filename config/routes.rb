@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'swipes#index'
+  root 'welcome#index'
   devise_for :users
   get 'swipes' => 'swipes#index'
   post 'swipes' => 'swipes#swipe'
