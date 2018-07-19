@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "groupme-bot-185300",
+  "private_key_id": "6bc54a2a19c14cd68df5472457f201c94a9a926e",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCikRM1LPLMurSu\n90m9mI/J+yvsAmiT/eivX8wredCI8IMllrxLrZzrZhcOwO33toOzlfNN5KJk3jQx\nColC9FnyVTT/7BdTFHyRye39ClMM2SW8a54tXWfGnTgmfBBlMGUgvQBFOuBo08o9\nYNf9x6aQQakPZm7Y+9FPwAOIZJ4BmIq1nBLmyb0ajVXWTbJEIy0Z6qP6BkTuSbhW\nLuDVQ9nEyNO4rsKPDKt5Ni1YnGs31jjnxMLrxBVvB7EKDRN/g9Cd76dhlUQ7FEW/\ntyBsQBVRGR+VBNFt3Fmnro+DK2E9h1gaAxcrrSoA5LQWpXeLUosmKtH5YZdOvxgX\nNOqd4OcVAgMBAAECggEAI7g8wDJgJxvfF5K+YSpkbb0CqZjd4aaoueASvHrHl09B\ngcDdHsPG9vI3nsZFg2hXB96q1zKlfARW82+dOVj3aofOXW1Csr6NoHr+D9t05B3S\nbNQ4rT8Yzks9Szd3YsR/c/ITXSLSrDXc+h+NVfXIY2oJ+5hGQucR1rQaEp4JGdBR\nA49ILNXPXHUCAYI01V2vllQHEVNbnuicv4OTey69ztQEzD/TK1ldDY/NLYhFEztT\nrFn7MWdyrfe1tNXv4WGLihzxa4gcMMpGPhKnX4GTXKE/y5BZbPTqDIl11QQdIt9Y\nRQpNR2J/WUJAolw4l+12KhiCpm6o46P8vlEktS9jAQKBgQDM6/hKpcr3ltAVqlXX\nRqz7KiNvLcd7E5ygBrZRmH84wL303XqlncxWeDA0xKOK4lL6e8YP8rWR6UQD2ium\ncrFy8e/W89ZGJHUfO1PSxRKBKUAqu+l4Hhu2N6Wn3u8XKwJShib2PDfDj0ANIdjt\nURAP35Xd+S4GHOU9zCOkgxrBwwKBgQDLFm88YFHlndSaOYvwMFUciC0Vae01DKnC\nQ4S8xUMMApZ34fKzf9HRd7FM0istNskYK3e9Aq5Mh0lM0mA0UMdTyyMqKZgrucch\n0VBu5Qcgs/8is0XtRUHvpJg5BQ3i+rBX/Q8Aw1+ppfPWF46e6xOVBpr7++lW17zV\nIdxQO2mORwKBgG7W053Mv1PcBwEw+O1QFRBlYnUoVdWEbhtAhizsRyPzXMutYEFk\ncLn0mF5yXeMpN6i0ehT2Oq+JdHiA8Us+jiyWIBwsF6Io5hDWjiha3/9syIBU05tc\n7bBJuRhrxPbLFJ5+YWSefasROJvhyuvSBNYRIYbG2NYFmxkp6b16DGbxAoGAPS+w\nKc+XPQfVQvXtjFrzeZopgxcb6Wy8RJQVDM6dyaOJ8+p2NdBfxa07FLsJWSD1azvF\nYoPJQbNMyUFkzL49n6hHGu/XMe1R6oVmp1KHWDoCt1Ct07OXDv1XA27bZTREJu5O\nM9upGbKvCSSlyolmp/KKhTq7bXeoI8qE1wNfZQcCgYB0mRvSFFDC9ka3E5cjqMP0\nDQihwC9UfXUrH+heH0s97hzecgDQiSRXisP3SvOfE5sY8jjlFESsZTykSUEzzOBH\n7P+Aac3CVyPUYcBZHIG4fW53Gv7P/jMpLRx8Nl3CuVRJrOH2RSVPaH2v6BHoBETa\nX4h1w6CSKky2qRe+TEKhAw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "cloud-storage-access@groupme-bot-185300.iam.gserviceaccount.com",
+  "client_id": "104554957628559871350",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/cloud-storage-access%40groupme-bot-185300.iam.gserviceaccount.com"
+}
