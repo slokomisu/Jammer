@@ -4,7 +4,7 @@ class SwipesController < ApplicationController
     potential_stack = User.where.not(id: current_user.id)
     already_swipped = current_user.swipes.map(&:swipee)
     already_swipped_ids = already_swipped.map(&:id)
-    stack = potential_stack.reject { |user| already_swippes_ids.include? user.id }
+    stack = potential_stack.reject { |user| already_swipped_ids.include? user.id }
     @card = stack.first
   end
 
