@@ -3,7 +3,6 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_many :swipes
   has_one_attached :clip
   validates :name, presence: true
   validates :instrument, presence: true
@@ -15,6 +14,10 @@ class User < ApplicationRecord
       matches.push(User.find(swipe.user_id))
     end
     matches
+  end
+
+  def swipes
+    Swipe.where(user_id: self.id)
   end
 
   private
