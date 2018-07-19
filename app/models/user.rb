@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_many :swipes
   has_one_attached :clip
+  validates :name, presence: true
+  validates :instrument, presence: true
 
   def matches
     matches = []
