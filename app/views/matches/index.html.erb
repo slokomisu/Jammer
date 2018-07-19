@@ -10,7 +10,7 @@
         <td class="align-middle"><%= image_tag(url_for(match.profile_picture), class: "rounded-circle", style: "height: 3rem") %></td>
         <td class="align-middle"><%= match.name %></td>
         <td class="align-middle"><%= match.instrument %></td>
-        <td class="align-middle"><%= audio_tag("bensound-happyrock.mp3", controls: true) %></td>
+        <td class="align-middle"><%= audio_tag(url_for(match.clip), controls: true) %></td>
       </tr>
     <% end %>
   </table>
