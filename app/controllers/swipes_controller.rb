@@ -15,7 +15,7 @@ class SwipesController < ApplicationController
       match = User.find(params[:swipee_id])
       flash[:notice] = "You have matched with #{match.name}!"
       flash.keep
-      redirect_to swipes_path
     end
+    redirect_to swipes_path
   end
 end
