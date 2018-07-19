@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.destroy_all
-Swipes.destroy_all
+Swipe.destroy_all
 
 15.times do
   password = Faker::Internet.password
