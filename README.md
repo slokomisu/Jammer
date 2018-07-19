@@ -1,20 +1,24 @@
-# Jammer
-A matching application for musicians
+# README
 
-# Goals
-## Minimum Viable Product
-* Stack of cards
-* Each card has audio clip
-* Approve/Deny
-* Match
-* User Accounts
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-## Stretch Goals
-* Location based matching
-* Chat
-* Look nice
-* Filters (By instrument, distance, etc)
-* Audio Clip Uploading
-* Account Creation
-* Record Audio Clips
-* More???
+Things you may want to cover:
+
+* Ruby version
+
+* System dependencies
+
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
