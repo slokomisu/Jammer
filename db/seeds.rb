@@ -19,6 +19,8 @@ me = User.create(email: 'test@email.com', name: 'John', instrument: Faker::Music
   User.create(email: Faker::Internet.email, name: Faker::Name.first_name, instrument: Faker::Music.instrument, password: password, password_confirmation: password)
 end
 
-Swipe.create(user_id: me.id, swipee_id: rand(2..15))
-Swipe.create(user_id: me.id, swipee_id: rand(2..15))
-Swipe.create(user_id: me.id, swipee_id: rand(2..15))
+Swipe.create(swipee_id: me.id, user_id: rand(2..16), liked: true)
+Swipe.create(swipee_id: me.id, user_id: rand(2..16), liked: true)
+Swipe.create(swipee_id: me.id, user_id: rand(2..16), liked: true)
+Swipe.create(swipee_id: me.id, user_id: rand(2..16), liked: true)
+
