@@ -5,7 +5,7 @@ class SwipesController < ApplicationController
     already_swipped = current_user.swipes.map(&:swipee)
     already_swipped_ids = already_swipped.map(&:id)
     stack = potential_stack.reject { |user| already_swipped_ids.include? user.id }
-    @card = stack.first
+    @swipee = stack.first
   end
 
   def swipe
