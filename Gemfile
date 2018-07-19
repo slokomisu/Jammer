@@ -12,6 +12,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
+gem 'faker'
 gem 'devise'
 gem 'bootstrap'
 gem 'jquery-rails'
@@ -20,7 +21,6 @@ gem "google-cloud-storage", "~> 1.8", require: false
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'faker'
   gem 'sqlite3'
 end
 
