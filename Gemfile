@@ -16,6 +16,7 @@ gem 'devise'
 gem 'bootstrap'
 gem 'jquery-rails'
 gem 'simple_form'
+gem "google-cloud-storage", "~> 1.8", require: false
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
