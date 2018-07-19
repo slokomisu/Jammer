@@ -4,4 +4,18 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :swipes
+  has_one_attached :clip
+
+  def mutual_swipes
+    Swipe.where(swipee_id: self.id, liked: true)
+  end
+
+  def matches
+    matches = []
+    swipes = mutual_swipes
+    swipes.each do |swipe|
+      matches.push(User.find(swipe.user_id))
+    end
+    matches
+  end
 end
