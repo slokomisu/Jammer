@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'swipes#index'
   devise_for :users
   get 'swipes/index'
   get 'matches/index'
