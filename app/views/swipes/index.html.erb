@@ -2,10 +2,11 @@
 <div class="container">
   <% if @swipee %>
     <div class="card h-100 row align-items-center" style="width: 18rem;">
-      <img class="card-img-top" src="https://picsum.photos/285/?random" alt="Card image cap">
+      <%= image_tag(url_for(@swipee.profile_picture), class: 'card-img-top', style: 'width: 18rem;')%>
       <div class="card-body">
         <h5 class="card-title"><%= @swipee.name %></h5>
         <p class="card-text">Plays: <%= @swipee.instrument %></p>
+        <%= audio_tag(url_for(@swipee.clip), controls: true, style: 'width: 17rem;') %>
         <div class="d-inline-block">
           <%= link_to "Yes", "/swipes/#{@swipee.id}/true", method: :post, class: "btn btn-success btn-block" %>
         </div>
