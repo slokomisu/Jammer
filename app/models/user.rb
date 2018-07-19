@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -10,20 +12,21 @@ class User < ApplicationRecord
 
   def matches
     matches = []
-    swipes = mutual_swipes
-    swipes.each do |swipe|
-      matches.push(User.find(swipe.user_id))
+
+    my_swipe_ids = swipes.map(&:swipee_id)
+    mutual_swipes.map(&:user_id).each do |swiper_id|
+      matches.push(User.find(swiper_id)) if my_swipe_ids.include? swiper_id
     end
     matches
   end
 
   def swipes
-    Swipe.where(user_id: self.id)
+    Swipe.where(user_id: id)
   end
 
   private
 
   def mutual_swipes
-    Swipe.where(swipee_id: self.id, liked: true)
+    Swipe.where(swipee_id: id, liked: true)
   end
 end
