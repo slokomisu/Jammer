@@ -15,7 +15,7 @@
       <tr>
         <td><%= match.name %></td>
         <td><%= match.instrument %></td>
-        <td><%= audio_tag("bensound-happyrock.mp3", controls: true) %></td>
+        <td><%= audio_tag(url_for(match.clip), controls: true) %></td>
       </tr>
     <% end %>
   </table>
