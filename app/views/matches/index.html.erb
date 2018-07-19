@@ -8,12 +8,14 @@
     <tr>
       <th>Name</th>
       <th>Instrument</th>
+      <th>Music</th>
     </tr>
 
     <% @matches.each do |match| %>
       <tr>
         <td><%= match.name %></td>
         <td><%= match.instrument %></td>
+        <td><%= audio_tag("bensound-happyrock.mp3", controls: true) %></td>
       </tr>
     <% end %>
   </table>
