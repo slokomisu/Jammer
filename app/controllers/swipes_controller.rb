@@ -13,7 +13,7 @@ class SwipesController < ApplicationController
     potential_match = Swipe.where(user_id: params[:swipee_id], swipee_id: current_user.id, liked: true)
     if !potential_match.empty?
       match = User.find(params[:swipee_id])
-      flash[:notice] = "You have matched with #{match.name}!"
+      flash[:success] = "You have matched with #{match.name}!"
       flash.keep
     end
     redirect_to swipes_path
