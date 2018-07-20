@@ -64,10 +64,10 @@
               <% end %>
             </p>
             <div class="d-inline-block">
-              <%= link_to "Yes", "/swipes/#{@swipee.id}/true", method: :post, class: "btn btn-success btn-block yes" %>
+              <%= link_to "No", "/swipes/#{@swipee.id}/false", method: :post, class: "btn btn-danger btn-block no" %>
             </div>
             <div class="d-inline-block">
-              <%= link_to "No", "/swipes/#{@swipee.id}/false", method: :post, class: "btn btn-danger btn-block no" %>
+              <%= link_to "Yes", "/swipes/#{@swipee.id}/true", method: :post, class: "btn btn-success btn-block yes" %>
             </div>
           </div>
 

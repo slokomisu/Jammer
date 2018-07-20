@@ -11,11 +11,14 @@
       <h5 class="card-title"><%= @current_user.name %></h5>
       <p class="card-text">
           Plays: <%= @current_user.instrument %>
-          <% if current_user.favorite_genre.present? %>
+          <% if @current_user.favorite_genre.present? %>
               <br>
-              Favorite Genre: <%= current_user.favorite_genre %>
+              Favorite Genre: <%= @current_user.favorite_genre %>
               <% end %>
       </p>
+      <div class="d-inline-block">
+              <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-success btn-block" %>
+      </div>
     </div>
   </div>
 </div>
