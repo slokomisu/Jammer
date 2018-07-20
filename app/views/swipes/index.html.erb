@@ -3,7 +3,7 @@
   <div class="row align-items-center">
     <div class="col"></div>
     <div class="col-md-4">
-      <div class="card h-100 text-center mt-3 shadow-lg">
+      <div class="card text-center mt-3 shadow-lg">
         <% if @swipee %>
           <% if @swipee.profile_picture.attached? %>
           <%= image_tag(url_for(@swipee.profile_picture), class: 'card-img-top')%>
