@@ -14,8 +14,9 @@
     }
   </script>
 
-  <div class="card h-100 row align-items-center text-center mt-5 shadow-lg" style="width: 18rem;">
-    <%= image_tag(url_for(@current_user.profile_picture), class: 'card-img-top', style: 'width: 18rem;', onClick: 'toggle()')%>
+  <div class="card h-100 row align-items-center text-center mt-5 shadow-lg parent" style="width: 18rem;">
+    <%= image_tag(url_for(@current_user.profile_picture), class: 'card-img-top', style: 'width: 18rem;', onClick: 'toggle()') %>
+    <%= image_tag "play", class: "image2" %>
     <div class="card-body" style="width: 100%">
       <h5 class="card-title"><%= @current_user.name %></h5>
       <p class="card-text">

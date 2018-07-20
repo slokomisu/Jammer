@@ -8,7 +8,7 @@
           <% if @swipee.profile_picture.attached? %>
           <%= image_tag(url_for(@swipee.profile_picture), class: 'card-img-top')%>
           <% else %>
-          <%= image_tag('https://placekitten.com/400/400', class: 'card-img-top')%>
+          <%= image_tag("https://api.adorable.io/avatars/285/#{@swipee.name}", class: 'card-img-top')%>
           <% end %>
           <div class="card-body">
             <h5 class="card-title"><%= @swipee.name %></h5>
