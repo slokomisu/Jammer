@@ -1,7 +1,7 @@
 <%= render partial: 'shared/navbar' %>
 <div class="container">
   <% if @swipee %>
-    <div class="card h-100 row align-items-center text-center" style="width: 18rem;">
+    <div class="card h-100 row align-items-center text-center mt-5 shadow-lg" style="width: 18rem;">
       <%= image_tag(url_for(@swipee.profile_picture), class: 'card-img-top', style: 'width: 18rem;')%>
       <div class="card-body" style="width: 100%">
         <h5 class="card-title"><%= @swipee.name %></h5>
@@ -18,7 +18,7 @@
       </div>
     </div>
   <% else %>
-    <div class="card h-100 row align-items-center" style="width: 18rem;">
+    <div class="card h-100 row align-items-center mt-5 shadow-lg" style="width: 18rem;">
       <img class="card-img-top" src="https://picsum.photos/285/?random" alt="Card image cap">
       <div class="card-body">
         All Out!

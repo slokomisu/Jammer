@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'profile' => 'profiles#index'
   root 'welcome#index'
   devise_for :users
   get 'swipes' => 'swipes#index'
