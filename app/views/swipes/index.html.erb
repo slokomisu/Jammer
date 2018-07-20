@@ -1,12 +1,14 @@
 <%= render partial: 'shared/navbar' %>
 <div class="container">
   <% if @swipee %>
-    <div class="card h-100 row align-items-center" style="width: 18rem;">
+    <div class="card h-100 row align-items-center text-center" style="width: 18rem;">
       <%= image_tag(url_for(@swipee.profile_picture), class: 'card-img-top', style: 'width: 18rem;')%>
-      <div class="card-body">
+      <div class="card-body" style="width: 100%">
         <h5 class="card-title"><%= @swipee.name %></h5>
-        <p class="card-text">Plays: <%= @swipee.instrument %></p>
-        <%= audio_tag(url_for(@swipee.clip), controls: true, style: 'width: 17rem;') %>
+        <p class="card-text">
+            Plays: <%= @swipee.instrument %>
+            <%= audio_tag(url_for(@swipee.clip), controls: true, style: "width: 100%;") %>
+        </p>
         <div class="d-inline-block">
           <%= link_to "Yes", "/swipes/#{@swipee.id}/true", method: :post, class: "btn btn-success btn-block" %>
         </div>
