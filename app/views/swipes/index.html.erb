@@ -1,28 +1,36 @@
 <%= render partial: 'shared/navbar' %>
 <div class="container">
-  <% if @swipee %>
-    <div class="card h-100 row align-items-center text-center mt-5 shadow-lg" style="width: 18rem;">
-      <%= image_tag(url_for(@swipee.profile_picture), class: 'card-img-top', style: 'width: 18rem;')%>
-      <div class="card-body" style="width: 100%">
-        <h5 class="card-title"><%= @swipee.name %></h5>
-        <p class="card-text">
-            Plays: <%= @swipee.instrument %>
-            <%= audio_tag(url_for(@swipee.clip), controls: true, style: "width: 100%;") %>
-        </p>
-        <div class="d-inline-block">
-          <%= link_to "Yes", "/swipes/#{@swipee.id}/true", method: :post, class: "btn btn-success btn-block" %>
-        </div>
-        <div class="d-inline-block">
-        <%= link_to "No", "/swipes/#{@swipee.id}/true", method: :post, class: "btn btn-danger btn-block" %>
-        </div>
+  <div class="row align-items-center">
+    <div class="col"></div>
+    <div class="col-md-4">
+      <div class="card h-100 text-center mt-3 shadow-lg">
+        <% if @swipee %>
+          <% if @swipee.profile_picture.attached? %>
+          <%= image_tag(url_for(@swipee.profile_picture), class: 'card-img-top')%>
+          <% else %>
+          <%= image_tag('https://placekitten.com/400/400', class: 'card-img-top')%>
+          <% end %>
+          <div class="card-body">
+            <h5 class="card-title"><%= @swipee.name %></h5>
+            <p class="card-text">
+              Plays: <%= @swipee.instrument %>
+              <%= audio_tag(url_for(@swipee.clip), controls: true, class: "w-100") %>
+            </p>
+            <div class="d-inline-block">
+              <%= link_to "Yes", "/swipes/#{@swipee.id}/true", method: :post, class: "btn btn-success btn-block" %>
+            </div>
+            <div class="d-inline-block">
+              <%= link_to "No", "/swipes/#{@swipee.id}/true", method: :post, class: "btn btn-danger btn-block" %>
+            </div>
+          </div>
+        <% else %>
+          <img class="card-img-top" src="https://picsum.photos/285/?random" alt="Card image cap">
+          <div class="card-body">
+            All Out!
+          </div>
+        <% end %>
       </div>
     </div>
-  <% else %>
-    <div class="card h-100 row align-items-center mt-5 shadow-lg" style="width: 18rem;">
-      <img class="card-img-top" src="https://picsum.photos/285/?random" alt="Card image cap">
-      <div class="card-body">
-        All Out!
-      </div>
+    <div class="col"></div>
     </div>
-  <% end %>
-</div>
+  </div>

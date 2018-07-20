@@ -7,7 +7,13 @@
   <table class="table">
     <% @matches.each do |match| %>
       <tr>
-        <td class="align-middle"><%= image_tag(url_for(match.profile_picture), class: "rounded-circle", style: "height: 3rem") %></td>
+        <td class="align-middle">
+          <% if match.profile_picture.attached? %>
+          <%= image_tag(url_for(match.profile_picture), class: "rounded-circle", style: "height: 3rem") %>
+          <% else %>
+          <%= image_tag('https://placekitten.com/400/400', class: 'card-img-top', style: 'width: 18rem')%>
+          <% end %>
+        </td>
         <td class="align-middle"><%= match.name %></td>
         <td class="align-middle"><%= match.instrument %></td>
         <td class="align-middle"><%= audio_tag(url_for(match.clip), controls: true) %></td>
