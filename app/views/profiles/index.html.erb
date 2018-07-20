@@ -1,12 +1,34 @@
 <%= render partial: 'shared/navbar' %>
 <div class="container">
-  <div class="card h-100 row align-items-center text-center mt-5 shadow-lg" style="width: 18rem;">
-    <%= image_tag(url_for(@current_user.profile_picture), class: 'card-img-top', style: 'width: 18rem;')%>
+  <script>
+    var sound = new Howl({
+      src: "<%= url_for(@current_user.clip) %>",
+    });
+    
+    function toggle() {
+      if (sound.playing()) {
+        sound.pause()
+        $(".image2")[0].src = "<%= image_path('play') %>"
+        $(".image2").fadeIn(400);
+      } else {
+        sound.play()
+        $(".image2")[0].src = "<%= image_path('pause') %>"
+        $(".image2").fadeOut(1000);
+      }
+    }
+  </script>
+
+  <div class="card h-100 row align-items-center text-center mt-5 shadow-lg parent" style="width: 18rem;">
+    <% if @current_user.profile_picture.attached? %>
+      <%= image_tag(url_for(@current_user.profile_picture), class: 'card-img-top', style: 'width: 18rem;', onClick: 'toggle()') %>
+    <% else %>
+      <%= image_tag("https://api.adorable.io/avatars/285/#{@current_user.name}", class: 'card-img-top' , onClick: 'toggle()')%>
+    <% end %>
+    <%= image_tag "play", class: "image2", onClick: 'toggle()' %>
     <div class="card-body" style="width: 100%">
       <h5 class="card-title"><%= @current_user.name %></h5>
       <p class="card-text">
           Plays: <%= @current_user.instrument %>
-          <%= audio_tag(url_for(@current_user.clip), controls: true, style: "width: 100%;") %>
       </p>
     </div>
   </div>
