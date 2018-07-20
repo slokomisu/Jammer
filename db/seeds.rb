@@ -12,7 +12,7 @@ User.destroy_all
 Swipe.destroy_all
 
 me = User.create(email: 'test@email.com', name: 'John', instrument: Faker::Music.instrument,
-                 password: 'password', password_confirmation: 'password')
+                 password: 'password', password_confirmation: 'password', favorite_genre: Faker::Music.genre)
 me.clip.attach(io: File.open('app/assets/audios/bensound-happyrock.mp3'), filename: 'bensound-happyrock.mp3')
 
 20.times do
