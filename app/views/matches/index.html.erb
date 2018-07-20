@@ -7,21 +7,34 @@
     </div>
   </div>
 
+  <script>
+    var ids = {};
+  </script>
+
   <div class="row">
     <% @matches.each do |match| %>
 
       <div class="col-md-4">
-        <div class="card text-center mt-3 shadow-lg">
+        <div class="card text-center mt-3 shadow-lg parent">
           <% if match.profile_picture.attached? %>
-          <%= image_tag(url_for(match.profile_picture), class: 'card-img-top')%>
+            <%= image_tag(url_for(match.profile_picture), class: 'card-img-top', onClick: "toggle(#{match.id})", profile: match.id)%>
           <% else %>
-          <%= image_tag('https://placekitten.com/400/400', class: 'card-img-top')%>
+            <%= image_tag("https://api.adorable.io/avatars/285/#{match.name}", class: 'card-img-top', onClick: "toggle(#{match.id})", profile: match.id)%>
           <% end %>
+          <%= image_tag "play.png", class: "image2", onClick: "toggle(#{match.id})", key: match.id %>
+          <script>
+            ids[<%= match.id %>] = new Howl({
+              src: "<%= url_for(match.clip) %>",
+            });
+          </script>
           <div class="card-body">
             <h5 class="card-title"><%= match.name %></h5>
             <p class="card-text">
               Plays: <%= match.instrument %>
-              <%= audio_tag(url_for(match.clip), controls: true, class: "w-100") %>
+              <% if match.favorite_genre.present? %>
+              <br>
+              Favorite Genre: <%= match.favorite_genre %>
+              <% end %>
             </p>
           </div>
         </div>
@@ -31,3 +44,33 @@
   </div>
 
 </div>
+
+<script>
+  var sound = new Howl({
+    src: "<%= url_for(@current_user.clip) %>",
+  });
+
+  function toggle(id) {
+    var indicator = $("[key=" + id + "]")
+    var image = indicator[0];
+
+    var sound = ids[id];
+
+    for (var sid in ids) {
+      if (sid != id) {
+        ids[sid].stop();
+        $("[key=" + sid + "]")[0].src = "<%= image_path('play.png') %>"
+        $("[key=" + sid + "]").fadeIn(200, () => image.src = "<%= image_path('play.png') %>");
+      }
+    }
+
+    if (sound.playing()) {
+      sound.pause()
+      image.src = "<%= image_path('play.png') %>"
+      indicator.fadeIn(200, () => image.src = "<%= image_path('play.png') %>");
+    } else {
+      sound.play()
+      indicator.fadeOut(1000);
+    }
+  }
+</script>

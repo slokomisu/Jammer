@@ -6,11 +6,15 @@
     <% else %>
       <%= image_tag("https://api.adorable.io/avatars/285/#{@current_user.name}", class: 'card-img-top' , onClick: 'toggle()')%>
     <% end %>
-    <%= image_tag "play", class: "image2", onClick: 'toggle()' %>
+    <%= image_tag "play.png", class: "image2", onClick: 'toggle()' %>
     <div class="card-body" style="width: 100%">
       <h5 class="card-title"><%= @current_user.name %></h5>
       <p class="card-text">
           Plays: <%= @current_user.instrument %>
+          <% if current_user.favorite_genre.present? %>
+              <br>
+              Favorite Genre: <%= current_user.favorite_genre %>
+              <% end %>
       </p>
     </div>
   </div>
@@ -47,11 +51,10 @@
   function toggle() {
     if (sound.playing()) {
       sound.pause()
-      image.src = "<%= image_path('play') %>"
-      indicator.fadeIn(200);
+      indicator.fadeIn(200, () => image.src = "<%= image_path('play.png') %>");
     } else {
       sound.play()
-      indicator.fadeOut(1000, () => image.src = "<%= image_path('pause') %>");
+      indicator.fadeOut(1000, () => image.src = "<%= image_path('pause.png') %>");
     }
   }
 </script>

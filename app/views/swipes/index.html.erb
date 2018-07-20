@@ -47,26 +47,69 @@
   <div class="row align-items-center">
     <div class="col"></div>
     <div class="col-md-4 cardcontainer">
-      <div class="card text-center mt-3 shadow-lg">
+      <div class="card text-center mt-3 shadow-lg parent">
         <% if @swipee %>
           <% if @swipee.profile_picture.attached? %>
-          <%= image_tag(url_for(@swipee.profile_picture), class: 'card-img-top', ondragstart: 'return false;', draggable: 'false')%>
+            <%= image_tag(url_for(@swipee.profile_picture), class: 'card-img-top', ondragstart: 'return false;', draggable: 'false', onClick: 'toggle()')%>
           <% else %>
-          <%= image_tag("https://api.adorable.io/avatars/285/#{@swipee.name}", class: 'card-img-top', ondragstart: 'return false;', draggable: 'false')%>
+            <%= image_tag("https://api.adorable.io/avatars/285/#{@swipee.name}", class: 'card-img-top', ondragstart: 'return false;', draggable: 'false', onClick: 'toggle()')%>
           <% end %>
+          <%= image_tag "play.png", class: "image2", onClick: 'toggle()' %>
           <div class="card-body">
             <h5 class="card-title"><%= @swipee.name %></h5>
             <p class="card-text">
               Plays: <%= @swipee.instrument %>
-              <%= audio_tag(url_for(@swipee.clip), controls: true, class: "w-100") %>
+              <% if @swipee.favorite_genre.present? %>
+              <br>
+              Favorite Genre: <%= @swipee.favorite_genre %>
+              <% end %>
             </p>
             <div class="d-inline-block">
               <%= link_to "Yes", "/swipes/#{@swipee.id}/true", method: :post, class: "btn btn-success btn-block yes" %>
             </div>
             <div class="d-inline-block">
-              <%= link_to "No", "/swipes/#{@swipee.id}/true", method: :post, class: "btn btn-danger btn-block no" %>
+              <%= link_to "No", "/swipes/#{@swipee.id}/false", method: :post, class: "btn btn-danger btn-block no" %>
             </div>
           </div>
+
+          <script>
+            var sound = new Howl({
+              src: "<%= url_for(@swipee.clip) %>",
+            });
+
+            var indicator = $(".image2");
+            var image = indicator[0];
+
+            var profile = $(".card-img-top");
+
+            profile.hover(
+              function() {
+                if (sound.playing()) {
+                  indicator.fadeIn(200);
+                }
+              },
+              function() {}
+            );
+
+            indicator.hover(
+              function() {},
+              function() {
+                if (sound.playing()) {
+                  indicator.fadeOut(200);
+                }
+              }
+            );
+
+            function toggle() {
+              if (sound.playing()) {
+                sound.pause()
+                indicator.fadeIn(200, () => image.src = "<%= image_path('play.png') %>");
+              } else {
+                sound.play()
+                indicator.fadeOut(1000, () => image.src = "<%= image_path('pause.png') %>");
+              }
+            }
+          </script>
         <% else %>
           <img class="card-img-top" src="https://picsum.photos/285/?random" alt="Card image cap">
           <div class="card-body">
@@ -75,9 +118,9 @@
         <% end %>
       </div>
     </div>
-    <div class="col"></div>
-    </div>
+  <div class="col"></div>
   </div>
+</div>
 
 <script>
   var card = $(".card")[0]

@@ -12,10 +12,15 @@
     <% end %>
 
     <%= f.input :instrument, required: true %>
+    <%= f.input :favorite_genre, label: 'Favorite Genre' %>
     <%= f.input :clip, as: :file %>
     <%= audio_tag(url_for(current_user.clip), controls: true) %>
     <%= f.input :profile_picture, as: :file %>
-    <%= image_tag(url_for(current_user.clip)) %>
+    <% if resource.profile_picture.attached? %>
+            <%= image_tag(url_for(resource.profile_picture), class: 'img-rounded', onClick: 'toggle()')%>
+          <% else %>
+            <%= image_tag("https://api.adorable.io/avatars/285/#{resource.name}", class: 'img-rounded', onClick: 'toggle()')%>
+          <% end %>
     <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
     <%= f.input :password_confirmation, required: false %>
     <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
