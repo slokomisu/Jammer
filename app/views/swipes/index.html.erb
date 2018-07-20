@@ -1,16 +1,60 @@
 <%= render partial: 'shared/navbar' %>
+<style>
+  .card {
+    transform-origin: 50% 99%;
+    user-select: none;
+  }
+
+  img {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+  }
+
+  .cardcontainer.right .card {
+    animation: right 0.7s ease-out;
+  }
+  .cardcontainer.left .card {
+    animation: left 0.7s ease-out;
+  }
+
+  @keyframes right {
+    from {
+      transform: rotate(0deg);
+      opacity: 1;
+    }
+    to {
+      transform: rotate(40deg) translateY(-200px);
+      opacity: 0;
+    }
+  }
+
+  @keyframes left {
+    from {
+      transform: rotate(0deg);
+      opacity: 1;
+    }
+    to {
+      transform: rotate(-40deg) translateY(-200px);
+      opacity: 0;
+    }
+  }
+</style>
+<script src="http://hammerjs.github.io/dist/hammer.min.js"></script>
 <div class="container">
   <div class="row align-items-center">
     <div class="col"></div>
-    <div class="col-md-4">
+    <div class="col-md-4 cardcontainer">
       <div class="card text-center mt-3 shadow-lg parent">
         <% if @swipee %>
           <% if @swipee.profile_picture.attached? %>
-            <%= image_tag(url_for(@swipee.profile_picture), class: 'card-img-top', onClick: 'toggle()')%>
+            <%= image_tag(url_for(@swipee.profile_picture), class: 'card-img-top', ondragstart: 'return false;', draggable: 'false', onClick: 'toggle()')%>
           <% else %>
-            <%= image_tag("https://api.adorable.io/avatars/285/#{@swipee.name}", class: 'card-img-top', onClick: 'toggle()')%>
+            <%= image_tag("https://api.adorable.io/avatars/285/#{@swipee.name}", class: 'card-img-top', ondragstart: 'return false;', draggable: 'false', onClick: 'toggle()')%>
           <% end %>
-          <%= image_tag "play.png", class: "image2", onClick: 'toggle()' %>
+          <%= image_tag "play.png", class: "image2", onClick: 'toggle()', ondragstart: 'return false;', draggable: 'false' %>
           <div class="card-body">
             <h5 class="card-title"><%= @swipee.name %></h5>
             <p class="card-text">
@@ -21,10 +65,10 @@
               <% end %>
             </p>
             <div class="d-inline-block">
-              <%= link_to "Yes", "/swipes/#{@swipee.id}/true", method: :post, class: "btn btn-success btn-block" %>
+              <%= link_to "Yes", "/swipes/#{@swipee.id}/true", method: :post, class: "btn btn-success btn-block yes" %>
             </div>
             <div class="d-inline-block">
-              <%= link_to "No", "/swipes/#{@swipee.id}/false", method: :post, class: "btn btn-danger btn-block" %>
+              <%= link_to "No", "/swipes/#{@swipee.id}/false", method: :post, class: "btn btn-danger btn-block no" %>
             </div>
           </div>
 
@@ -77,3 +121,28 @@
   <div class="col"></div>
   </div>
 </div>
+
+<script>
+  var card = $(".card")[0]
+  var hammertime = new Hammer(card, null);
+  hammertime.get('swipe').set({ direction: Hammer.DIRECTION_HORIZONTAL });
+  hammertime.on('swipe', function(ev) {
+    //right
+    if (ev.type == "swipe" && ev.direction == 4) {
+      card.parentNode.classList.add("right");
+    } else {
+      card.parentNode.classList.add("left");
+    }
+
+    setTimeout(swipe(ev), 700)
+
+    console.log(ev);
+  });
+  function swipe(ev) {
+    if (ev.type == "swipe" && ev.direction == 4) {
+      $(".yes")[0].click();
+    } else {
+      $(".no")[0].click();
+    }
+  }
+</script>
