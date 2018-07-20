@@ -13,18 +13,21 @@ Swipe.destroy_all
 
 me = User.create(email: 'test@email.com', name: 'John', instrument: Faker::Music.instrument,
                  password: 'password', password_confirmation: 'password')
+me.clip.attach(io: File.open('app/assets/audios/bensound-happyrock.mp3'), filename: 'bensound-happyrock.mp3')
 
-30.times do
-  password = Faker::Internet.password
-  User.create(email: Faker::Internet.email, name: Faker::Name.first_name, instrument: Faker::Music.instrument, password: password, password_confirmation: password)
+20.times do
+  pw = Faker::Internet.password
+  user = User.create(email: Faker::Internet.email, name: Faker::Name.first_name, instrument: Faker::Music.instrument, password: pw, password_confirmation: pw)
+  user.clip.attach(io: File.open('app/assets/audios/bensound-happyrock.mp3'), filename: 'bensound-happyrock.mp3')
 end
 
-Swipe.create(swipee_id: me.id, user_id: rand(2..30), liked: true)
-Swipe.create(swipee_id: me.id, user_id: rand(2..30), liked: true)
-Swipe.create(swipee_id: me.id, user_id: rand(2..30), liked: true)
-Swipe.create(swipee_id: me.id, user_id: rand(2..30), liked: true)
-Swipe.create(swipee_id: me.id, user_id: rand(2..30), liked: true)
-Swipe.create(swipee_id: me.id, user_id: rand(2..30), liked: true)
-Swipe.create(swipee_id: me.id, user_id: rand(2..30), liked: true)
-Swipe.create(swipee_id: me.id, user_id: rand(2..30), liked: true)
+
+
+Swipe.create(swipee_id: me.id, user_id: rand(2..20), liked: true)
+Swipe.create(swipee_id: me.id, user_id: rand(2..20), liked: true)
+Swipe.create(swipee_id: me.id, user_id: rand(2..20), liked: true)
+Swipe.create(swipee_id: me.id, user_id: rand(2..20), liked: true)
+Swipe.create(swipee_id: me.id, user_id: rand(2..20), liked: true)
+Swipe.create(swipee_id: me.id, user_id: rand(2..20), liked: true)
+
 
