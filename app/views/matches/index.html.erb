@@ -52,12 +52,21 @@
 
     var sound = ids[id];
 
+    for (var sid in ids) {
+      if (sid != id) {
+        ids[sid].stop();
+        $("[key=" + sid + "]")[0].src = "<%= image_path('play.png') %>"
+        $("[key=" + sid + "]").fadeIn(200, () => image.src = "<%= image_path('play.png') %>");
+      }
+    }
+
     if (sound.playing()) {
       sound.pause()
+      image.src = "<%= image_path('play.png') %>"
       indicator.fadeIn(200, () => image.src = "<%= image_path('play.png') %>");
     } else {
       sound.play()
-      indicator.fadeOut(1000, () => image.src = "<%= image_path('pause.png') %>");
+      indicator.fadeOut(1000);
     }
   }
 </script>
