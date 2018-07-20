@@ -21,7 +21,7 @@
           <% else %>
             <%= image_tag("https://api.adorable.io/avatars/285/#{match.name}", class: 'card-img-top', onClick: "toggle(#{match.id})", profile: match.id)%>
           <% end %>
-          <%= image_tag "play", class: "image2", onClick: "toggle(#{match.id})", key: match.id %>
+          <%= image_tag "play.png", class: "image2", onClick: "toggle(#{match.id})", key: match.id %>
           <script>
             ids[<%= match.id %>] = new Howl({
               src: "<%= url_for(match.clip) %>",
