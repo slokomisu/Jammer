@@ -5,25 +5,29 @@
     <div class="col-md-4">
       <div class="card h-100 text-center mt-3 shadow-lg">
         <% if @swipee %>
-        <%= image_tag(url_for(@swipee.profile_picture), class: 'card-img-top')%>
-        <div class="card-body">
-          <h5 class="card-title"><%= @swipee.name %></h5>
-          <p class="card-text">
-            Plays: <%= @swipee.instrument %>
-            <%= audio_tag(url_for(@swipee.clip), controls: true, class: "w-100") %>
-          </p>
-          <div class="d-inline-block">
-            <%= link_to "Yes", "/swipes/#{@swipee.id}/true", method: :post, class: "btn btn-success btn-block" %>
+          <% if @swipee.profile_picture.attached? %>
+          <%= image_tag(url_for(@swipee.profile_picture), class: 'card-img-top')%>
+          <% else %>
+          <%= image_tag('https://placekitten.com/400/400', class: 'card-img-top')%>
+          <% end %>
+          <div class="card-body">
+            <h5 class="card-title"><%= @swipee.name %></h5>
+            <p class="card-text">
+              Plays: <%= @swipee.instrument %>
+              <%= audio_tag(url_for(@swipee.clip), controls: true, class: "w-100") %>
+            </p>
+            <div class="d-inline-block">
+              <%= link_to "Yes", "/swipes/#{@swipee.id}/true", method: :post, class: "btn btn-success btn-block" %>
+            </div>
+            <div class="d-inline-block">
+              <%= link_to "No", "/swipes/#{@swipee.id}/true", method: :post, class: "btn btn-danger btn-block" %>
+            </div>
           </div>
-          <div class="d-inline-block">
-            <%= link_to "No", "/swipes/#{@swipee.id}/true", method: :post, class: "btn btn-danger btn-block" %>
-          </div>
-        </div>
         <% else %>
-        <img class="card-img-top" src="https://picsum.photos/285/?random" alt="Card image cap">
-        <div class="card-body">
-          All Out!
-        </div>
+          <img class="card-img-top" src="https://picsum.photos/285/?random" alt="Card image cap">
+          <div class="card-body">
+            All Out!
+          </div>
         <% end %>
       </div>
     </div>
