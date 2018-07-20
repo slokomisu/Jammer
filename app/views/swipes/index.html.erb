@@ -55,11 +55,11 @@
             function toggle() {
               if (sound.playing()) {
                 sound.pause()
-                image.src = "<%= image_path('play') %>"
+                image.src = "<%= image_path('play.png') %>"
                 indicator.fadeIn(200);
               } else {
                 sound.play()
-                indicator.fadeOut(1000, () => image.src = "<%= image_path('pause') %>");
+                indicator.fadeOut(1000, () => image.src = "<%= image_path('pause.png') %>");
               }
             }
           </script>
