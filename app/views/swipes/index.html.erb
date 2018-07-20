@@ -54,7 +54,7 @@
           <% else %>
             <%= image_tag("https://api.adorable.io/avatars/285/#{@swipee.name}", class: 'card-img-top', ondragstart: 'return false;', draggable: 'false', onClick: 'toggle()')%>
           <% end %>
-          <%= image_tag "play.png", class: "image2", onClick: 'toggle()' %>
+          <%= image_tag "play.png", class: "image2", onClick: 'toggle()', ondragstart: 'return false;', draggable: 'false' %>
           <div class="card-body">
             <h5 class="card-title"><%= @swipee.name %></h5>
             <p class="card-text">
