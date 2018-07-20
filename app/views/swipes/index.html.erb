@@ -15,12 +15,16 @@
             <h5 class="card-title"><%= @swipee.name %></h5>
             <p class="card-text">
               Plays: <%= @swipee.instrument %>
+              <% if @swipee.favorite_genre.present? %>
+              <br>
+              Favorite Genre: <%= @swipee.favorite_genre %>
+              <% end %>
             </p>
             <div class="d-inline-block">
               <%= link_to "Yes", "/swipes/#{@swipee.id}/true", method: :post, class: "btn btn-success btn-block" %>
             </div>
             <div class="d-inline-block">
-              <%= link_to "No", "/swipes/#{@swipee.id}/true", method: :post, class: "btn btn-danger btn-block" %>
+              <%= link_to "No", "/swipes/#{@swipee.id}/false", method: :post, class: "btn btn-danger btn-block" %>
             </div>
           </div>
 
@@ -28,12 +32,12 @@
             var sound = new Howl({
               src: "<%= url_for(@swipee.clip) %>",
             });
-          
+
             var indicator = $(".image2");
             var image = indicator[0];
-          
+
             var profile = $(".card-img-top");
-          
+
             profile.hover(
               function() {
                 if (sound.playing()) {
@@ -42,7 +46,7 @@
               },
               function() {}
             );
-          
+
             indicator.hover(
               function() {},
               function() {
@@ -51,7 +55,7 @@
                 }
               }
             );
-          
+
             function toggle() {
               if (sound.playing()) {
                 sound.pause()

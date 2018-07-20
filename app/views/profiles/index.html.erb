@@ -11,6 +11,10 @@
       <h5 class="card-title"><%= @current_user.name %></h5>
       <p class="card-text">
           Plays: <%= @current_user.instrument %>
+          <% if current_user.favorite_genre.present? %>
+              <br>
+              Favorite Genre: <%= current_user.favorite_genre %>
+              <% end %>
       </p>
     </div>
   </div>

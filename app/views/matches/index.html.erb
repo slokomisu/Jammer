@@ -31,6 +31,10 @@
             <h5 class="card-title"><%= match.name %></h5>
             <p class="card-text">
               Plays: <%= match.instrument %>
+              <% if match.favorite_genre.present? %>
+              <br>
+              Favorite Genre: <%= match.favorite_genre %>
+              <% end %>
             </p>
           </div>
         </div>

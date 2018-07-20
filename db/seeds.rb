@@ -17,7 +17,7 @@ me.clip.attach(io: File.open('app/assets/audios/bensound-happyrock.mp3'), filena
 
 20.times do
   pw = Faker::Internet.password
-  user = User.create(email: Faker::Internet.email, name: Faker::Name.first_name, instrument: Faker::Music.instrument, password: pw, password_confirmation: pw)
+  user = User.create(email: Faker::Internet.email, name: Faker::Name.first_name, instrument: Faker::Music.instrument, password: pw, password_confirmation: pw, favorite_genre: Faker::Music.genre)
   user.clip.attach(io: File.open('app/assets/audios/bensound-happyrock.mp3'), filename: 'bensound-happyrock.mp3')
 end
 
