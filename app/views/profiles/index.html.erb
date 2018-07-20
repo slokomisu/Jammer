@@ -1,23 +1,5 @@
 <%= render partial: 'shared/navbar' %>
 <div class="container">
-  <script>
-    var sound = new Howl({
-      src: "<%= url_for(@current_user.clip) %>",
-    });
-    
-    function toggle() {
-      if (sound.playing()) {
-        sound.pause()
-        $(".image2")[0].src = "<%= image_path('play') %>"
-        $(".image2").fadeIn(400);
-      } else {
-        sound.play()
-        $(".image2")[0].src = "<%= image_path('pause') %>"
-        $(".image2").fadeOut(1000);
-      }
-    }
-  </script>
-
   <div class="card h-100 row align-items-center text-center mt-5 shadow-lg parent" style="width: 18rem;">
     <% if @current_user.profile_picture.attached? %>
       <%= image_tag(url_for(@current_user.profile_picture), class: 'card-img-top', style: 'width: 18rem;', onClick: 'toggle()') %>
@@ -33,3 +15,43 @@
     </div>
   </div>
 </div>
+
+<script>
+  var sound = new Howl({
+    src: "<%= url_for(@current_user.clip) %>",
+  });
+
+  var indicator = $(".image2");
+  var image = indicator[0];
+
+  var profile = $(".card-img-top");
+
+  profile.hover(
+    function() {
+      if (sound.playing()) {
+        indicator.fadeIn(200);
+      }
+    },
+    function() {}
+  );
+
+  indicator.hover(
+    function() {},
+    function() {
+      if (sound.playing()) {
+        indicator.fadeOut(200);
+      }
+    }
+  );
+
+  function toggle() {
+    if (sound.playing()) {
+      sound.pause()
+      image.src = "<%= image_path('play') %>"
+      indicator.fadeIn(200);
+    } else {
+      sound.play()
+      indicator.fadeOut(1000, () => image.src = "<%= image_path('pause') %>");
+    }
+  }
+</script>
